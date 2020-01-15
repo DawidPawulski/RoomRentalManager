@@ -34,9 +34,27 @@
     <Content Include="public\favicon.ico" />
     <Content Include="public\index.html" />
     <Content Include="src\App.vue" />
+    <Content Include="src\components\DataBox.vue">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\components\Home.vue" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="src\views\AddPage.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\MainPage.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\NewApartmentPage.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\OwnerPage.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\TenantPage.vue">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dist\" />
@@ -44,9 +62,22 @@
     <Folder Include="src\" />
     <Folder Include="src\assets\" />
     <Folder Include="src\components\" />
+    <Folder Include="src\views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="babel.config.js" />
+    <Content Include="src\components\LoginModal.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\MarketTable.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\Navbar.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\OwnerApartmentList.vue">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\main.js" />
   </ItemGroup>
   <PropertyGroup>
