@@ -5,6 +5,7 @@ import MainPage from './views/MainPage';
 import NewApartmentPage from './views/NewApartmentPage';
 import OwnerPage from './views/OwnerPage';
 import TenantPage from './views/TenantPage';
+import AllTenantsPage from './views/AllTenantsPage';
 
 
 Vue.use(Router);
@@ -20,7 +21,8 @@ export default new Router({
         {
             path: '/advert/:id',
             name: 'AddPage',
-            component: AddPage
+            component: AddPage,
+            props: true 
         },
         {
             path: '/new_apartment',
@@ -30,12 +32,20 @@ export default new Router({
         {
             path: '/user/owner/:id',
             name: 'OwnerPage',
-            component: OwnerPage
+            component: OwnerPage,
+            props: true 
         },
         {
             path: '/user/tenant/:id',
             name: 'TenantPage',
-            component: TenantPage
-        }
+            component: TenantPage,
+            props: true 
+        },
+        {
+            path: '/all_tenants',
+            name: 'AllTenantsPage',
+            component: AllTenantsPage
+        },
+
     ]
 })

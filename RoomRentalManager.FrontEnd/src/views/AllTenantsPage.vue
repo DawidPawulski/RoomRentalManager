@@ -1,12 +1,12 @@
 <template>
-    <div>owner {{ $route.params.id }}</div>
+    <div>All Tenants</div>
 </template>
 
 <script>
     export default {
-        name: 'OwnerPage',
+        name: 'AllTenantsPage',
         props: {
-            UserID: Number
+
         }
     }
 </script>

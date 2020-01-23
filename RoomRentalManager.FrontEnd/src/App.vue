@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Navbar :UserRole="UserRole"/>
+        <Navbar :UserRole="UserRole" :UserID="UserID"/>
         <Home msg="Hello world!" />
         <router-view></router-view>
     </div>
@@ -18,7 +18,8 @@
         },
         data() {
             return {
-                UserRole: "Owner"
+                UserRole: "Owner",
+                UserID: 1
             }
         }
     };

@@ -6,7 +6,7 @@
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
             <b-collapse id="nav-collapse" is-nav>
-                <OwnerNavbar v-if="UserRole === 'Owner'" />
+                <OwnerNavbar v-if="UserRole === 'Owner'" :UserID="UserID"/>
                 <TenantNavbar v-else-if="UserRole === 'Tenant'" />
                 <b-navbar-nav v-else>
                     <b-nav-item><router-link to="/">Marketplace</router-link></b-nav-item>
@@ -18,10 +18,7 @@
                         <b-button size="sm" class="my-2 my-sm-0" type="button">Login</b-button>
                         <b-button size="sm" class="my-2 my-sm-0" type="button">Register</b-button>
                     </b-nav-form>
-                    <b-nav-form v-else>
-                        <b-button size="sm" class="my-2 my-sm-0" type="button">Logout</b-button>
-                    </b-nav-form>
-
+                    <UserRightSideNavbar v-else/>
 
                 </b-navbar-nav>
             </b-collapse>
@@ -32,15 +29,18 @@
 <script>
     import TenantNavbar from "./TenantNavbar";
     import OwnerNavbar from "./OwnerNavbar";
+    import UserRightSideNavbar from "./UserRightSideNavbar";
 
     export default {
         name: 'Navbar',
         props: {
-            UserRole: String
+            UserRole: String,
+            UserID: Number
         },
         components: {
             TenantNavbar,
-            OwnerNavbar
+            OwnerNavbar,
+            UserRightSideNavbar
         }
     };
 </script>

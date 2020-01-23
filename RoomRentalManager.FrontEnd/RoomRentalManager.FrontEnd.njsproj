@@ -46,10 +46,16 @@
     <Content Include="src\components\TenantNavbar.vue">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\components\UserRightSideNavbar.vue">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\router.js">
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\views\AddPage.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\AllTenantsPage.vue">
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\views\MainPage.vue">
