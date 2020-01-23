@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Navbar/>
+        <Navbar :UserRole="UserRole"/>
         <Home msg="Hello world!" />
         <router-view></router-view>
     </div>
@@ -15,6 +15,11 @@
         components: {
             Home,
             Navbar
+        },
+        data() {
+            return {
+                UserRole: "Owner"
+            }
         }
     };
 </script>
