@@ -6,6 +6,7 @@ import NewApartmentPage from './views/NewApartmentPage';
 import OwnerPage from './views/OwnerPage';
 import TenantPage from './views/TenantPage';
 import AllTenantsPage from './views/AllTenantsPage';
+import RequestListPage from './views/RequestListPage';
 
 
 Vue.use(Router);
@@ -46,6 +47,11 @@ export default new Router({
             name: 'AllTenantsPage',
             component: AllTenantsPage
         },
+        {
+            path: '/requests',
+            name: 'RequestListPage',
+            component: RequestListPage
+        }
 
     ]
 })

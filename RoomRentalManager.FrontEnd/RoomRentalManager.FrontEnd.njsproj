@@ -67,6 +67,9 @@
     <Content Include="src\views\OwnerPage.vue">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\views\RequestListPage.vue">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\views\TenantPage.vue">
       <SubType>Code</SubType>
     </Content>

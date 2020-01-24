@@ -7,7 +7,7 @@
 
             <b-collapse id="nav-collapse" is-nav>
                 <OwnerNavbar v-if="UserRole === 'Owner'" :UserID="UserID"/>
-                <TenantNavbar v-else-if="UserRole === 'Tenant'" />
+                <TenantNavbar v-else-if="UserRole === 'Tenant'" :UserID="UserID"/>
                 <b-navbar-nav v-else>
                     <b-nav-item><router-link to="/">Marketplace</router-link></b-nav-item>
                 </b-navbar-nav>
