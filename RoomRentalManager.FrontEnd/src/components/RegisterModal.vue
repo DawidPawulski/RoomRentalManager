@@ -89,10 +89,10 @@
             onSubmit(evt) {
                 evt.preventDefault()
                 const bcrypt = require('bcryptjs');
-
                 this.form.Hash = bcrypt.hashSync(this.form.Password, 10);
                 alert(JSON.stringify(this.form))
-            }
+            },
+            
             }
         }
     
