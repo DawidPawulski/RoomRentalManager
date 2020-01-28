@@ -1,34 +1,26 @@
 <template>
-    <div><market :AdvertList="Adverts"></market></div>
+    <div><market :Projects="projects"></market></div>
 </template>
 
 <script>
     import MarketTable from '../components/MarketTable';
-
+    import axios from 'axios';
+    
     export default {
         name: 'MainPage',
-        data (){
+        data() {
             return {
-                Adverts: [
-                {
-                    image: "img1",
-                    title: "title1",
-                    date: "1"
-                },
-                {
-                    image: "img2",
-                    title: "title2",
-                    date: "2"
-                },
-                {
-                    image: "img3",
-                    title: "title3",
-                    date: "3"
-                }
-            ]
+                projects: null
             }
             
         },
+
+        mounted () {
+            axios
+                .get('https://localhost:5001/api/Advertisements')
+                   .then(response => (this.projects = response.data))
+        },
+
         components: {
             'market': MarketTable
         }
