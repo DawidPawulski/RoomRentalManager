@@ -18,7 +18,7 @@
         },
         data() {
             return {
-                UserRole: "Tenant",
+                UserRole: "None",
                 UserID: 1
             }
         }

@@ -16,13 +16,15 @@
                 <b-navbar-nav class="ml-auto">
                     <b-nav-form v-if="UserRole === 'None'">
                         <b-button size="sm" class="my-2 my-sm-0" type="button">Login</b-button>
-                        <b-button size="sm" class="my-2 my-sm-0" type="button">Register</b-button>
+                        <b-button size="sm" class="my-2 my-sm-0" v-b-modal.RegisterModal>Register</b-button>
+                        <!--<b-button size="sm" class="my-2 my-sm-0" type="button">Register</b-button>-->
                     </b-nav-form>
-                    <UserRightSideNavbar v-else/>
+                    <UserRightSideNavbar v-else />
 
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>
+        <RegisterModal></RegisterModal>
     </div>
 </template>
 
@@ -30,6 +32,7 @@
     import TenantNavbar from "./TenantNavbar";
     import OwnerNavbar from "./OwnerNavbar";
     import UserRightSideNavbar from "./UserRightSideNavbar";
+    import RegisterModal from "./RegisterModal";
 
     export default {
         name: 'Navbar',
@@ -40,7 +43,8 @@
         components: {
             TenantNavbar,
             OwnerNavbar,
-            UserRightSideNavbar
+            UserRightSideNavbar,
+            RegisterModal
         }
     };
 </script>
