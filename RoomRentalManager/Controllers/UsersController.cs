@@ -41,6 +41,7 @@ namespace RoomRentalManager.Controllers
             return user;
         }
 
+
         // PUT: api/Users/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.

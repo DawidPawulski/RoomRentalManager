@@ -87,15 +87,28 @@
         },
         methods: {
             onSubmit(evt) {
-                evt.preventDefault()
+                evt.preventDefault();
+                this.checkIfEmailUsed();
                 const bcrypt = require('bcryptjs');
                 this.form.Hash = bcrypt.hashSync(this.form.Password, 10);
-                alert(JSON.stringify(this.form))
+                alert(JSON.stringify(this.form));
             },
-            
+            checkIfEmailUsed() {
+                const axios = require('axios');
+                var url = 'https://localhost:44311/api/Users';
+                axios.get(url)
+                    .then(function (response) {
+                        // handle success
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        // handle error
+                        console.log(error);
+                    })
             }
         }
-    
+    }
+
 </script>
 
 <style scoped>
