@@ -27,8 +27,8 @@ namespace RoomRentalManager.Controllers
             return await _context.User.ToListAsync();
         }
 
-        // GET: api/Users/5
-        [HttpGet("{id}")]
+        // GET: api/Users/byId?id=1
+        [HttpGet("byId")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
             var user = await _context.User.FindAsync(id);
@@ -41,6 +41,19 @@ namespace RoomRentalManager.Controllers
             return user;
         }
 
+        // GET: api/Users/byEmail?Email=a@a.a
+        [HttpGet("byEmail")]
+        public async Task<ActionResult<User>> GetUser(string Email)
+        {
+            var userList = await _context.User.Where(x => x.Email == Email).ToListAsync();
+
+            if (userList.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            return userList[0];
+        }
 
         // PUT: api/Users/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for

@@ -50,8 +50,8 @@
 
                 <b-form-group id="input-group-6"
                               label="Password:"
-                              label-for="input-5">
-                    <b-form-input id="input-5"
+                              label-for="input-6">
+                    <b-form-input id="input-6"
                                   v-model="form.Password"
                                   type="password"
                                   required></b-form-input>
@@ -62,6 +62,7 @@
             <b-card class="mt-3" header="Form Data Result">
                 <pre class="m-0">{{ form }}</pre>
             </b-card>
+
         </b-modal>
     </div>
 </template>
@@ -86,25 +87,52 @@
             }
         },
         methods: {
+            /* eslint-disable */
             onSubmit(evt) {
                 evt.preventDefault();
-                this.checkIfEmailUsed();
-                const bcrypt = require('bcryptjs');
-                this.form.Hash = bcrypt.hashSync(this.form.Password, 10);
+                var emailInUse = this.checkIfEmailUsed();
+                if (emailInUse === true) {
+                    console.log("email in use");
+                }
+                else {
+                    const bcrypt = require('bcryptjs');
+                    this.form.Hash = bcrypt.hashSync(this.form.Password, 10);
+                    this.registerUser()
+                }
+
                 alert(JSON.stringify(this.form));
             },
+            /* eslint-disable */
             checkIfEmailUsed() {
                 const axios = require('axios');
-                var url = 'https://localhost:44311/api/Users';
+                var url = 'https://localhost:44311/api/Users/byEmail?Email=' + this.form.Email;
                 axios.get(url)
                     .then(function (response) {
-                        // handle success
+                        console.log(response)
+                        return true
+                    })
+                    .catch(function (error) {
+                        return false
+                    })
+            },
+            registerUser() {
+                const axios = require('axios');
+                var url = "https://localhost:44311/api/Users"
+                axios.post(url, {
+                    "Email": this.form.Email,
+                    "FirstName": this.form.FirstName,
+                    "LastName": this.form.LastName,
+                    "Phone": this.form.PhoneNumber,
+                    "PersonalDocumentNumber": this.form.DocumentID,
+                    "Role": this.form.UserRole,
+                    "Password": this.form.Hash,
+                })
+                    .then(function (response) {
                         console.log(response);
                     })
                     .catch(function (error) {
-                        // handle error
-                        console.log(error);
-                    })
+                        console.log(error.response);
+                    });
             }
         }
     }

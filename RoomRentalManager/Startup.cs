@@ -33,7 +33,7 @@ namespace RoomRentalManager
                 options.AddPolicy(MyAllowSpecificOrigins,
                 builder =>
                 {
-                    builder.WithOrigins("http://localhost:1337");
+                    builder.WithOrigins("http://localhost:1337").AllowAnyHeader().AllowAnyMethod();
                 });
             });
             services.AddControllers();
