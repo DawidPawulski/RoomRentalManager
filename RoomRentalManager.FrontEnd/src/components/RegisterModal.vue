@@ -57,11 +57,15 @@
                                   required></b-form-input>
                 </b-form-group>
 
+                <b-alert :show="dismissCountDown"
+                         dismissible
+                         fade
+                         variant="alert"
+                         @dismiss-count-down="countDownChanged">
+                    Email already in use
+                </b-alert>
                 <b-button type="submit" variant="primary">Submit</b-button>
             </b-form>
-            <b-card class="mt-3" header="Form Data Result">
-                <pre class="m-0">{{ form }}</pre>
-            </b-card>
 
         </b-modal>
     </div>
@@ -83,37 +87,47 @@
                     Password: '',
                     Hash: ''
                 },
-                show: true
+                show: true,
+                dismissSecs: 5,
+                dismissCountDown: 0
             }
         },
         methods: {
             /* eslint-disable */
+            countDownChanged(dismissCountDown) {
+                this.dismissCountDown = dismissCountDown
+            },
+            showAlert() {
+                this.dismissCountDown = this.dismissSecs
+            },
+
             onSubmit(evt) {
                 evt.preventDefault();
-                var emailInUse = this.checkIfEmailUsed();
-                if (emailInUse === true) {
-                    console.log("email in use");
-                }
-                else {
-                    const bcrypt = require('bcryptjs');
-                    this.form.Hash = bcrypt.hashSync(this.form.Password, 10);
-                    this.registerUser()
-                }
-
-                alert(JSON.stringify(this.form));
+                this.checkIfEmailUsed().then((emailInUse) => {
+                    if (emailInUse === true) {
+                        this.showAlert();
+                        console.log("email in use");
+                    }
+                    else {
+                        const bcrypt = require('bcryptjs');
+                        this.form.Hash = bcrypt.hashSync(this.form.Password, 10);
+                        this.registerUser()
+                    }
+                });
             },
             /* eslint-disable */
             checkIfEmailUsed() {
                 const axios = require('axios');
-                var url = 'https://localhost:44311/api/Users/byEmail?Email=' + this.form.Email;
-                axios.get(url)
+                let url = 'https://localhost:44311/api/Users/byEmail?Email=' + this.form.Email;
+                return axios.get(url)
                     .then(function (response) {
                         console.log(response)
-                        return true
+                        return true;
                     })
                     .catch(function (error) {
-                        return false
+                        return false;
                     })
+
             },
             registerUser() {
                 const axios = require('axios');
