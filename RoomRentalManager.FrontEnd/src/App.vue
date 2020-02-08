@@ -18,9 +18,12 @@
         },
         data() {
             return {
-                UserRole: "None",
+                UserRole: RegExp("UserRole" + "=([^;]+)").exec(document.cookie)[1],
                 UserID: 1
             }
+        },
+        mounted: function() {
+            document.cookie = "UserRole=None"
         }
     };
 </script>

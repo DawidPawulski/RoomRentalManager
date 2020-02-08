@@ -95,6 +95,7 @@ namespace RoomRentalManager.Controllers
         {
             _context.User.Add(user);
             await _context.SaveChangesAsync();
+            await Login.LoginUserAsync(user, HttpContext);
 
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }

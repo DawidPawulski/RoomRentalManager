@@ -112,6 +112,7 @@
                         const bcrypt = require('bcryptjs');
                         this.form.Hash = bcrypt.hashSync(this.form.Password, 10);
                         this.registerUser()
+                        document.cookie = "UserRole=" + this.form.UserRole
                     }
                 });
             },
