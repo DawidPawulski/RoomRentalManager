@@ -65,7 +65,7 @@
                     if (correctCredentials === true) {
                         this.$bvModal.hide("LoginModal")
                         var path = "/user/" + RegExp("UserRole" + "=([^;]+)").exec(document.cookie)[1] + "/" + RegExp("UserID" + "=([^;]+)").exec(document.cookie)[1];
-                        this.$router.go(path);                        
+                        this.$router.push(path);                        
                     }
                     else {
                         this.showAlert();

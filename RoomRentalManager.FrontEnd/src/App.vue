@@ -2,7 +2,8 @@
     <div id="app">
         <Navbar :UserRole="UserRole" :UserID="UserID"/>
         <Home msg="Hello world!" />
-        <router-view></router-view>
+        <router-view>
+        </router-view>
     </div>
 </template>
 
