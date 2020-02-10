@@ -55,6 +55,34 @@ namespace RoomRentalManager.Controllers
             return userList[0];
         }
 
+        // GET: api/Users/login?Email=a@a.a&Password=a
+        [HttpGet("Login")]
+        public async Task<ActionResult<User>> LoginUser(string Email, string Password)
+        {
+            var userList = await _context.User.Where(x => x.Email == Email).ToListAsync();
+
+            if (userList.Count() == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                User user = userList[0];
+                bool correctPassword = BCrypt.Net.BCrypt.Verify(Password, user.Password);
+                if (correctPassword)
+                {
+                    await Login.LoginUserAsync(user, HttpContext);
+                    return user;
+                }
+                else
+                {
+                    return NotFound();
+                }
+
+            }
+
+        }
+
         // PUT: api/Users/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.

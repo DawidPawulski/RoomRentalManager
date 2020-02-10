@@ -15,7 +15,7 @@
                 <!-- Right aligned nav items -->
                 <b-navbar-nav class="ml-auto">
                     <b-nav-form v-if="UserRole === 'None'">
-                        <b-button size="sm" class="my-2 my-sm-0" type="button">Login</b-button>
+                        <b-button size="sm" class="my-2 my-sm-0" v-b-modal.LoginModal>Login</b-button>
                         <b-button size="sm" class="my-2 my-sm-0" v-b-modal.RegisterModal>Register</b-button>
                         <!--<b-button size="sm" class="my-2 my-sm-0" type="button">Register</b-button>-->
                     </b-nav-form>
@@ -25,6 +25,7 @@
             </b-collapse>
         </b-navbar>
         <RegisterModal></RegisterModal>
+        <LoginModal></LoginModal>
     </div>
 </template>
 
@@ -33,6 +34,7 @@
     import OwnerNavbar from "./OwnerNavbar";
     import UserRightSideNavbar from "./UserRightSideNavbar";
     import RegisterModal from "./RegisterModal";
+    import LoginModal from "./LoginModal"
 
     export default {
         name: 'Navbar',
@@ -44,7 +46,8 @@
             TenantNavbar,
             OwnerNavbar,
             UserRightSideNavbar,
-            RegisterModal
+            RegisterModal,
+            LoginModal
         }
     };
 </script>
