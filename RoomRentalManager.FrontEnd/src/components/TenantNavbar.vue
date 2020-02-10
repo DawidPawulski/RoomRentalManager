@@ -11,7 +11,7 @@
         export default {
         name: "TenantNavbar",
         props: {
-            UserID: Number
+            UserID: String
         }
     }
 

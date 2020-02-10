@@ -17,7 +17,6 @@
                     <b-nav-form v-if="UserRole === 'None'">
                         <b-button size="sm" class="my-2 my-sm-0" v-b-modal.LoginModal>Login</b-button>
                         <b-button size="sm" class="my-2 my-sm-0" v-b-modal.RegisterModal>Register</b-button>
-                        <!--<b-button size="sm" class="my-2 my-sm-0" type="button">Register</b-button>-->
                     </b-nav-form>
                     <UserRightSideNavbar v-else />
 
@@ -40,7 +39,7 @@
         name: 'Navbar',
         props: {
             UserRole: String,
-            UserID: Number
+            UserID: String
         },
         components: {
             TenantNavbar,

@@ -10,7 +10,7 @@
     export default {
         name: "OwnerNavbar",
         props: {
-            UserID: Number
+            UserID: String
         }
     }
 </script>

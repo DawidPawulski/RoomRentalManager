@@ -61,23 +61,35 @@
 
             onSubmit(evt) {
                 evt.preventDefault();
-                this.loginUser();
+                this.loginUser().then((correctCredentials) => {
+                    if (correctCredentials === true) {
+                        this.$bvModal.hide("LoginModal")
+                        var path = "/user/" + RegExp("UserRole" + "=([^;]+)").exec(document.cookie)[1] + "/" + RegExp("UserID" + "=([^;]+)").exec(document.cookie)[1];
+                        this.$router.go(path);                        
+                    }
+                    else {
+                        this.showAlert();
+                    }
+                })
             },
             /* eslint-disable */
 
             loginUser() {
                 const axios = require('axios');
                 var url = "https://localhost:44311/api/Users/login?Email=" + this.form.Email + "&Password=" + this.form.Password;
-                axios.get(url, {
-                    "Email": this.form.Email,                   
+                return axios.get(url, {
+                    "Email": this.form.Email,
                     "Password": this.form.Password
                 })
                     .then(function (response) {
                         console.log(response);
+                        document.cookie = "UserRole=" + response.data.role;
+                        document.cookie = "UserID=" + response.data.id.toString();
+                        return true;
                     })
                     .catch(function (error) {
                         console.log(error.response);
-                        this.showAlert();
+                        return false;
                     });
             }
         }

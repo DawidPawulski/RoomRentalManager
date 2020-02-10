@@ -10,6 +10,7 @@
     import Home from './components/Home.vue';
     import Navbar from './components/Navbar.vue';
 
+
     export default {
         name: 'app',
         components: {
@@ -19,11 +20,12 @@
         data() {
             return {
                 UserRole: RegExp("UserRole" + "=([^;]+)").exec(document.cookie)[1],
-                UserID: 1
+                UserID: RegExp("UserID" + "=([^;]+)").exec(document.cookie)[1]
             }
         },
         mounted: function() {
-            document.cookie = "UserRole=None"
+            document.cookie = "UserRole=None",
+            document.cookie = "UserID=0"
         }
     };
 </script>
