@@ -1,9 +1,27 @@
 <template>
     <div>
     <Navbar :UserRole="UserRole" :UserID="UserID" />
-    <div>
-        <market :AdvertList="Adverts"></market>
-    </div>
+    <b-container fluid>
+        <b-row align-h="center">
+            <b-col cols="3">
+                <br />
+                <br />
+                <h2>MARKETPLACE</h2>
+                <br />
+                <br />
+                <br />
+            </b-col>
+        </b-row>
+
+        <b-row align-h="center">
+            <b-col cols="3">
+                <market :AdvertList="Adverts"></market>
+            </b-col>
+        </b-row>
+        <div>
+
+        </div>
+    </b-container>
         </div>
 </template>
 

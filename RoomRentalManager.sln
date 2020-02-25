@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomRentalManager", "RoomRentalManager\RoomRentalManager.csproj", "{AB7D3C19-47AE-41CE-8C46-F53C523BF86E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRM", "RoomRentalManager\RRM.csproj", "{AB7D3C19-47AE-41CE-8C46-F53C523BF86E}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "RoomRentalManager.FrontEnd", "RoomRentalManager.FrontEnd\RoomRentalManager.FrontEnd.njsproj", "{55291AB1-E6E0-4655-9911-51B6873DB23F}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "RRM.Front", "RoomRentalManager.FrontEnd\RRM.Front.njsproj", "{55291AB1-E6E0-4655-9911-51B6873DB23F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
