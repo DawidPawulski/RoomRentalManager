@@ -61,23 +61,44 @@
 
             onSubmit(evt) {
                 evt.preventDefault();
-                this.loginUser().then((correctCredentials) => {
-                    if (correctCredentials === true) {
-                        this.$bvModal.hide("LoginModal")
-                        var path = "/user/" + RegExp("UserRole" + "=([^;]+)").exec(document.cookie)[1] + "/" + RegExp("UserID" + "=([^;]+)").exec(document.cookie)[1];
-                        this.$router.push(path);                        
+                this.checkIfEmailExist().then((emailExist) => {
+                    if (emailExist === true) {
+                        this.loginUser().then((correctCredentials) => {
+                            if (correctCredentials === true) {
+                                this.$bvModal.hide("LoginModal")
+                                var path = "/user/" + RegExp("UserRole" + "=([^;]+)").exec(document.cookie)[1] + "/" + RegExp("UserID" + "=([^;]+)").exec(document.cookie)[1];
+                                this.$router.push(path);
+                            }
+                            else {
+                                this.showAlert();
+                            }
+                        })
                     }
                     else {
-                        this.showAlert();
+                        this.showAlert()
                     }
-                })
+                });
+
+            },
+            checkIfEmailExist() {
+                const axios = require('axios');
+                let url = 'https://localhost:44311/api/Users/byEmail?Email=' + this.form.Email;
+                return axios.get(url)
+                    .then(function (response) {
+                        console.log(response)
+                        return true;
+                    })
+                    .catch(function (error) {
+                        return false;
+                    })
+
             },
             /* eslint-disable */
 
             loginUser() {
                 const axios = require('axios');
-                var url = "https://localhost:44311/api/Users/login?Email=" + this.form.Email + "&Password=" + this.form.Password;
-                return axios.get(url, {
+                var url = "https://localhost:44311/api/Users/Login";
+                return axios.post(url, {
                     "Email": this.form.Email,
                     "Password": this.form.Password
                 })

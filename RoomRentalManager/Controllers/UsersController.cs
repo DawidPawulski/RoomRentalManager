@@ -55,34 +55,6 @@ namespace RoomRentalManager.Controllers
             return userList[0];
         }
 
-        // GET: api/Users/login?Email=a@a.a&Password=a
-        [HttpGet("Login")]
-        public async Task<ActionResult<User>> LoginUser(string Email, string Password)
-        {
-            var userList = await _context.User.Where(x => x.Email == Email).ToListAsync();
-
-            if (userList.Count() == 0)
-            {
-                return NotFound();
-            }
-            else
-            {
-                User user = userList[0];
-                bool correctPassword = BCrypt.Net.BCrypt.Verify(Password, user.Password);
-                if (correctPassword)
-                {
-                    await Login.LoginUserAsync(user, HttpContext);
-                    return user;
-                }
-                else
-                {
-                    return NotFound();
-                }
-
-            }
-
-        }
-
         // PUT: api/Users/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
@@ -126,6 +98,38 @@ namespace RoomRentalManager.Controllers
             await Login.LoginUserAsync(user, HttpContext);
 
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
+        }
+
+        // POST: api/Users/Login
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        [HttpPost("Login")]
+        public async Task<ActionResult<User>> LoginUser(User user)
+        {
+            string Email = user.Email;
+            string Password = user.Password;
+            var userList = await _context.User.Where(x => x.Email == Email).ToListAsync();
+
+            if (userList.Count() == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                User fullUser = userList[0];
+                bool correctPassword = BCrypt.Net.BCrypt.Verify(Password, fullUser.Password);
+                if (correctPassword)
+                {
+                    await Login.LoginUserAsync(fullUser, HttpContext);
+                    return fullUser;
+                }
+                else
+                {
+                    return NotFound();
+                }
+
+            }
+
         }
 
         // DELETE: api/Users/5
