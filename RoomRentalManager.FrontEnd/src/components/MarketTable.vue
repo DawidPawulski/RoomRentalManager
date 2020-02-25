@@ -65,11 +65,16 @@
         methods: {
             getAdvertisements() {
                 const axios = require('axios');
-                let url = "";
+                let url = "https://localhost:44311/api/Advertisements";
                 axios.get(url).then((response) => {
                     console.log(response)
                 })
             }
+        },
+        mounted: function () {
+            this.$nextTick(() => {
+                this.getAdvertisements();
+            })
         }
     };
 </script>
