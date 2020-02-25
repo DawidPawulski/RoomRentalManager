@@ -63,6 +63,7 @@
             }
         },
         methods: {
+             /* eslint-disable */
             getAdvertisements() {
                 const axios = require('axios');
                 let url = "https://localhost:44311/api/Advertisements";
