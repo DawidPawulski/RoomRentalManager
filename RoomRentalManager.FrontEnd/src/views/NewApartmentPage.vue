@@ -94,6 +94,8 @@
                                                   v-model="form.year"
                                                   type="number"
                                                   pattern="[0-9]{4}"
+                                                  min ="1900"
+                                                  max="2100"
                                                   required
                                                   placeholder="year of renovation"></b-form-input>
                                 </b-form-group>
@@ -193,7 +195,7 @@
                                                                   v-model="room.area"
                                                                   type="number"
                                                                   required
-                                                                  placeholder="Bank Account Number"></b-form-input>
+                                                                  placeholder="Room area"></b-form-input>
                                                 </b-form-group>
                                             </b-form-group>
 

@@ -23,11 +23,11 @@
         },
         data() {
             return {
-                perPage: 1,
+                perPage: 5,
                 currentPage: 1,
                 fields: [
                     {
-                        key: 'date',
+                        key: 'creationDate',
                         label: 'Date',
                         sortable: true
                     },
@@ -37,37 +37,23 @@
                         sortable: true
                     },
                     {
-                        key: 'image',
-                        label: 'Photo',
+                        key: 'description',
+                        label: 'Description',
                         sortable: false
                     }
                 ],
                 items: [
-                    {
-                        image: "img1",
-                        title: "title1",
-                        date: "1"
-                    },
-                    {
-                        image: "img2",
-                        title: "title2",
-                        date: "2"
-                    },
-                    {
-                        image: "img3",
-                        title: "title3",
-                        date: "3"
-                    }
                 ]
             }
         },
         methods: {
-             /* eslint-disable */
+            /* eslint-disable */
             getAdvertisements() {
                 const axios = require('axios');
                 let url = "https://localhost:44311/api/Advertisements";
-                axios.get(url).then((response) => {
+                return axios.get(url).then(response => {
                     console.log(response)
+                    this.items = response.data
                 })
             }
         },
