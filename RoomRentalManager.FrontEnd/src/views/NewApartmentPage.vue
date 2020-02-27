@@ -266,9 +266,12 @@
                 // error coming up Error in v-on handler: "TypeError: Cannot read property 'then' of undefined"
                 // ask Piotr or Maciek for help with that
                 this.sendApartment().then(response => {
-                    this.form.roomsList.foreach((room) => {
-                        this.sendRoom(room, response.data.ApartmentId)
-                    })
+                    for (var room of this.form.roomsList) {
+                        this.sendRoom(room, response.data.id)
+                    }
+                    //this.form.roomsList.foreach((room) => {
+                    //    this.sendRoom(room, response.data.ApartmentId)
+                    //})
                 })
 
                 alert(JSON.stringify(this.form))
@@ -301,7 +304,7 @@
                 }
                 const axios = require('axios');
                 let url = "https://localhost:44311/api/Apartments"
-                axios.post(url, {
+                return axios.post(url, {
                     "UserID": parseInt(this.UserID),
                     "NumberOfRooms": parseInt(this.form.rooms),
                     "SmokingAllowed": smoking,
@@ -327,11 +330,11 @@
                 }
                 const axios = require('axios');
                 let url = "https://localhost:44311/api/Rooms";
-                axios.post(url, {
-                    "ApartmentId": apartmentId,
-                    "Area": object.area,
+                return axios.post(url, {
+                    "ApartmentId": parseInt(apartmentId),
+                    "Area": parseInt(object.area),
                     "Furnished": furnished,
-                    "MonthlyAmount": object.monthlyAmount,
+                    "MonthlyAmount": parseInt(object.monthlyAmount),
                     "BankAccountNumber": object.bankAccount
                 }).then((response) => {
                     console.log(response)

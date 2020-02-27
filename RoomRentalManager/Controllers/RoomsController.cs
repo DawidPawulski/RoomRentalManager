@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RoomRentalManager.Models;
+using System.Web.Http.Cors;
 
 namespace RRM.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class RoomsController : ControllerBase
@@ -27,8 +29,8 @@ namespace RRM.Controllers
             return await _context.Room.ToListAsync();
         }
 
-        // GET: api/Rooms/5
-        [HttpGet("{id}")]
+        // GET: api/Rooms/byId?id=1
+        [HttpGet("byId")]
         public async Task<ActionResult<Room>> GetRoom(int id)
         {
             var room = await _context.Room.FindAsync(id);
@@ -39,6 +41,14 @@ namespace RRM.Controllers
             }
 
             return room;
+        }
+
+
+        // GET: api/Rooms/byApartmentId?apartmentId=5
+        [HttpGet("byApartmentId")]
+        public async Task<ActionResult<IEnumerable<Room>>> GetRoom(int apartmentId, int userId)
+        {
+            return await _context.Room.Where(x => x.ApartmentId == apartmentId).ToListAsync();
         }
 
         // PUT: api/Rooms/5

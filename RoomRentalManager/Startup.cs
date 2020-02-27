@@ -30,6 +30,7 @@ namespace RoomRentalManager
                     builder.WithOrigins("http://localhost:1337").AllowAnyHeader().AllowAnyMethod();
                 });
             });
+
             services.AddControllers();
             services.AddDbContext<Models.RRM_DBContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("RRM_DB")));
