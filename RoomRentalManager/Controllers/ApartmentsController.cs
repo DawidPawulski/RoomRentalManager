@@ -41,6 +41,20 @@ namespace RRM.Controllers
             return apartment;
         }
 
+        // GET: api/Apartments/User?user_id=3
+        [HttpGet("User")]
+        public async Task<ActionResult<IEnumerable<Apartment>>> GetApartments(int user_id)
+        {
+            var apartments = await _context.Apartment.Where(x => x.UserId == user_id).ToListAsync();
+
+            if (apartments == null)
+            {
+                return NotFound();
+            }
+
+            return apartments;
+        }
+
         // PUT: api/Apartments/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.

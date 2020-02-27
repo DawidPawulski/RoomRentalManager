@@ -3,10 +3,10 @@
     <Navbar :UserRole="UserRole" :UserID="UserID" />
     <b-container fluid>
         <b-row align-h="center">
-            <b-col cols="3">
+            <b-col cols="10">
                 <br />
                 <br />
-                <h2>MARKETPLACE</h2>
+                <h2 align-h="center">MARKETPLACE</h2>
                 <br />
                 <br />
                 <br />
@@ -14,7 +14,7 @@
         </b-row>
 
         <b-row align-h="center">
-            <b-col cols="3">
+            <b-col cols="10">
                 <market :AdvertList="Adverts"></market>
             </b-col>
         </b-row>
