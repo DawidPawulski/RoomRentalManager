@@ -212,9 +212,9 @@
 
                             <b-button type="submit" variant="primary">Submit</b-button>
                         </b-form>
-                        <b-card class="mt-3" header="Form Data Result">
+                        <!--<b-card class="mt-3" header="Form Data Result">
                             <pre class="m-0">{{ form }}</pre>
-                        </b-card>
+                        </b-card>-->
                     </div>
                 </b-col>
             </b-row>
@@ -276,7 +276,7 @@
                     //})
                 })
 
-                alert(JSON.stringify(this.form))
+                //alert(JSON.stringify(this.form))
             },
             // change it to recognize rooms later and update after another save or add edit button
             saveRoom() {
